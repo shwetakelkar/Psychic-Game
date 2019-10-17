@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PsychicGame</title>
+</head>
+<body>
+
+        <div id="game">
+                <h1>The Psychic Game</h1>
+                <div class="row">
+                    <div class="col">
+                          <h4>Guess what letter I am thinking of</h4>
+                          <h4>Wins :<span id="win-text"></span></h4>
+                          <h4>Loses :<span id="lose-text"></span></h4>
+                          <h4>Guesses left:<span id="guess-text"></span></h4>
+                          <h4>Your guesses so far :<span id="attemps-text"></span></h4>  
+                    </div>
+                  </div>
+        </div>
+
+        <script type="text/javascript">
+
+
+            var guessText = document.getElementById("guess-text");
+
+            var winText = document.getElementById("win-text");
+
+            var loseText = document.getElementById("lose-text");
+
+            var attemptText = document.getElementById("attemps-text");
+
+            var attemptNum = "";
+
+            var winNum = 0;
+
+            var loseNum = 0;
+
+            var guessNum = 9;
+
+             // This function is run whenever the user presses a key.
+            document.onkeyup = function(event) {
+
+                var userGuess = event.key;
+                userGuess.toLowerCase();
+
+                var alphabetRandom = "abcdefghijklmnopqrstuvwxyz";
+                var computerGuess;
+                // generating random alphabet letter.
+                computerGuess = alphabetRandom.charAt(Math.floor(Math.random()* alphabetRandom.length) );
+
+                if(userGuess===computerGuess)
+                {
+                    winNum++;
+                    attemptNum = "";
+                }
+                else{
+                    loseNum++;
+                    if( guessNum != 0)
+                        guessNum--;
+                    else
+                    guessNum = 9;    
+                    attemptNum += userGuess + ', ' ;
+
+                }
+                //updating the response
+                winText.textContent = winNum;
+                
+                loseText.textContent = loseNum;
+
+                guessText.textContent = guessNum;
+
+                attemptText.textContent = attemptNum;
+
+                
+            }
+           
+        </script>
+    
+</body>
+</html>

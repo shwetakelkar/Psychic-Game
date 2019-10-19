@@ -57,12 +57,19 @@
                     attemptNum = "";
                 }
                 else{
-                    loseNum++;
-                    if( guessNum != 0)
+                    
+                    if( guessNum != 1){
                         guessNum--;
-                    else
-                    guessNum = 9;    
-                    attemptNum += userGuess + ', ' ;
+                        attemptNum += userGuess + ', ' ;
+                    }
+                        
+                    else{
+                        guessNum = 9;
+                        loseNum++;
+                        attemptNum = "";
+
+                    }    
+                    
 
                 }
                 //updating the response
